@@ -1,0 +1,11 @@
+# Set up a base image for Python-3.6 use
+FROM python:3.6
+
+WORKDIR /usr/src/app
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+
+COPY src .
+
+ENTRYPOINT [ "nameko", "run", "src.main"]
+
