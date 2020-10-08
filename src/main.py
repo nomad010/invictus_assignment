@@ -77,7 +77,8 @@ class HuffmanCodec:
 
     @ rpc
     def decode(self, word: str):
-        """ The huffman package is missing a decode function in its API. We
+        """
+        The huffman package is missing a decode function in its API. We
         implement the decode manually here by slicing off prefixes that are
         in the codebook. This can fail when codes aren't in the codebook.
         """

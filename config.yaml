@@ -1,4 +1,4 @@
-AMQP_URI: "pyamqp://guest:guest@happy_pike"
+AMQP_URI: pyamqp://${RABBITMQ_USER:guest}:${RABBITMQ_PASSWORD:password}@${RABBITMQ_HOST:localhost}
 WEB_SERVER_ADDRESS: "0.0.0.0:8000"
 rpc_exchange: "nameko-rpc"
 max_workers: 10
@@ -10,5 +10,5 @@ LOGGING:
     console:
       class: logging.StreamHandler
   root:
-    level: DEBUG
+    level: ${LOG_LEVEL:DEBUG}
     handlers: [console]
