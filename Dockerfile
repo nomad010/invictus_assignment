@@ -10,9 +10,9 @@ WORKDIR /usr/src/app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy over the src directory and words file
+# Copy over the src directory and config files.
 COPY src src
-COPY words .
+COPY words config.yaml ./
 
 # Expose the 8000 port for this service
 EXPOSE 8000
@@ -22,6 +22,7 @@ ENV RABBITMQ_USER="guest"
 ENV RABBITMQ_PASSWORD="guest"
 ENV RABBITMQ_HOST="localhost"
 ENV WORDS_PATH='words'
+ENV LOG_LEVEL="DEBUG"
 
 # Set an entrypoint to use
-ENTRYPOINT [ "nameko", "run", "src.main"]
+ENTRYPOINT [ "nameko", "run", "src.main", "--config", "config.yaml"]
